@@ -8,52 +8,51 @@ Braco braco;
 Conexao conexao;
 Servidor servidor(80);
 
-const int encoderPinA = 13;  // DT
-const int encoderPinB = 14;  // CLK
-const int buttonPin = 12;    // SW
+// const int encoderPinA = 13;  // DT
+// const int encoderPinB = 14;  // CLK
+// const int buttonPin = 12;    // SW
 
-volatile int lastStateA = LOW;
-volatile int lastStateB = LOW;
+// volatile int lastStateA = LOW;
+// volatile int lastStateB = LOW;
 
-volatile int encoderValue = 0;
+// volatile int encoderValue = 0;
 
-void IRAM_ATTR encoderISR() {
+// void IRAM_ATTR encoderISR() {
 
-  int stateA = digitalRead(encoderPinA);
-  int stateB = digitalRead(encoderPinB);
+//   int stateA = digitalRead(encoderPinA);
+//   int stateB = digitalRead(encoderPinB);
 
-  // Detectar a direção de rotação
-  if (stateA != lastStateA) {
-    if (stateB != stateA) {
-      encoderValue++;  // Sentido horário
-    } else {
-      encoderValue--;  // Sentido anti-horário
-    }
-  }
+//   // Detectar a direção de rotação
+//   if (stateA != lastStateA) {
+//     if (stateB != stateA) {
+//       encoderValue++;  // Sentido horário
+//     } else {
+//       encoderValue--;  // Sentido anti-horário
+//     }
+//   }
 
-  lastStateA = stateA;
-  lastStateB = stateB;
-}
+//   lastStateA = stateA;
+//   lastStateB = stateB;
+// }
 
 
 void setup() {
 
   Serial.begin(115200);
-  Serial.println("PCA9685 Servo Control via Serial");
   
   braco.iniciar();
   conexao.iniciar();
   conexao.conectar();
   servidor.iniciar();
   
-  pinMode(encoderPinA, INPUT);
-  pinMode(encoderPinB, INPUT);
-  pinMode(buttonPin, INPUT_PULLUP);
+  // pinMode(encoderPinA, INPUT);
+  // pinMode(encoderPinB, INPUT);
+  // pinMode(buttonPin, INPUT_PULLUP);
 
-  Serial.println("Teste de leitura do encoder");
-  attachInterrupt(digitalPinToInterrupt(encoderPinA), encoderISR, CHANGE);
+  // Serial.println("Teste de leitura do encoder");
+  // attachInterrupt(digitalPinToInterrupt(encoderPinA), encoderISR, CHANGE);
   
-  braco.set_posicaoBraco({50,50,50,50,50,50}, 70);
+  // braco.set_posicaoBraco({50,50,50,50,50,50}, 70);
 
 }
 
