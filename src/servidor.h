@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include <ESPAsyncWebServer.h>
 #include "pagina.h"
+#include "memoria.h"
+#include "braco.h"
 
 class Servidor {
     private:
@@ -11,7 +13,7 @@ class Servidor {
 
     public:
         Servidor(int porta);
-        void iniciar();
+        void iniciar(Memoria& memoria, Braco& braco, int& modo_operacao);
 };
 
 #endif
